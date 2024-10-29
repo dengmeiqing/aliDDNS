@@ -1,0 +1,7 @@
+{
+    "AccessKeyID": "AccessKeyID",
+    "AccessKeySecret": "AccessKeySecret",
+    "DomainName": "home.example.com",
+    "Record": "@",
+    "RecordType": "A"
+}
