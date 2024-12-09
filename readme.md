@@ -41,7 +41,7 @@ RecordType： “A” A记录。就是更新的你IPV4地址。
 
 可以用crontab定时运行程序。 参考的crontab命令：
 
-     */5 * * * * aliddns.exe -c /etc/aliddns/config.json
+     */5 * * * * aliddns -c /etc/aliddns/config.json
 
 ### &#x20;注意：
 
