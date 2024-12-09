@@ -13,3 +13,6 @@ DomainName： “home.example.com”，改成你的域名，支持三级或者�
 record： “@”，子域名设置，一般是www或者@.或者你想设置的任何子域名
 
 RecordType： “A” A记录。就是更新的你IPV4地址。
+
+2024年12月9日更新
+增加了更新判断，如果要更新的ip和DNS记录的IP一致，则不更新。
