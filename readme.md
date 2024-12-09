@@ -34,9 +34,14 @@ RecordType： “A” A记录。就是更新的你IPV4地址。
 
 定时执行可以用windows计划任务。
 
-&#x20;2.linux下，解压压缩包，将config.json复制到/etc/aliddns/目录下。aliddns复制到usr/bin目录下,加执行权限。
+&#x20;2.linux下，解压压缩包，将config.json复制到/etc/aliddns/目录下。aliddns复制到usr/bin目录下,
+
+加执行权限。
 
     chmod +x aliddns
+
+执行程序
+
     aliddns -c /etc/aliddns/config.json
 
 可以用crontab定时运行程序。 参考的crontab命令：
