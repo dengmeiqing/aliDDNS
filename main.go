@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/alidns"
 )
@@ -81,6 +82,12 @@ func updateDNSRecord(client *alidns.Client, config Config, newIP string) (string
 		return "", fmt.Errorf("record %s not found in domain %s", config.Record, config.DomainName)
 	}
 
+	// 检查当前 IP 和新 IP 是否相同
+	if currentIP == newIP {
+		fmt.Printf("IP address is already up to date: %s\n", currentIP) // 打印当前 IP
+		return currentIP, nil                                           // 返回当前 IP 地址，无需更新
+	}
+
 	// 更新 DNS 记录
 	updateRequest := alidns.CreateUpdateDomainRecordRequest()
 	updateRequest.RecordId = recordID
@@ -88,7 +95,14 @@ func updateDNSRecord(client *alidns.Client, config Config, newIP string) (string
 	updateRequest.Type = config.RecordType
 	updateRequest.Value = newIP
 
-	if _, err = client.UpdateDomainRecord(updateRequest); err != nil {
+	// 尝试更新 DNS 记录，并处理可能的错误
+	_, err = client.UpdateDomainRecord(updateRequest)
+	if err != nil {
+		// 未知类型错误处理，用错误信息的字符串进行匹配
+		if strings.Contains(err.Error(), "DomainRecordDuplicate") {
+			fmt.Printf("The DNS record already exists with the same value: %s\n", newIP)
+			return currentIP, nil // 返回当前 IP 地址，因为记录已经存在
+		}
 		return "", fmt.Errorf("failed to update domain record: %w", err)
 	}
 
