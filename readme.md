@@ -30,26 +30,24 @@ RecordType： “A” A记录。就是更新的你IPV4地址。
 
 也可以用命令行加参数运行：&#x20;
 
-    aliDDNS.exe -c config.json 
+    aliddns.exe -c config.json 
 
 定时执行可以用windows计划任务。
 
-&#x20;2.linux下，解压压缩包，将config.json复制到/etc/aliDDNS/目录下。aliDDNS复制到usr/bin目录下,加执行权限。
+&#x20;2.linux下，解压压缩包，将config.json复制到/etc/aliddns/目录下。aliddns复制到usr/bin目录下,加执行权限。
 
-    chmod +x aliDDNS
-    aliDDNS -c /etc/aliDDNS/config.json
+    chmod +x aliddns
+    aliddns -c /etc/aliddns/config.json
 
 可以用crontab定时运行程序。 参考的crontab命令：
 
-     */5 * * * * aliDDNS.exe -c /etc/aliDDNS/config.json
+     */5 * * * * aliddns.exe -c /etc/aliddns/config.json
 
 ### &#x20;注意：
 
 1.程序会自动判断当前的IP地址和DNS记录的IP是否一致，如果一致则不更新。&#x20;
 
 2.程序会自动判断当前的IP地址是否是公网IP地址，如果不是则不更新。&#x20;
-
-
 
 ### 2024年12月9日更新&#x20;
 
