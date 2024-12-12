@@ -187,6 +187,10 @@ func updateDNSRecord(zoneID, recordID, recordName, newIP string) error {
 }
 
 func main() {
+	// 定义命令行参数
+	configFilePath := flag.String("c", "config.json", "配置文件路径")
+	flag.Parse()
+	
 	// 加载配置文件
 	err := loadConfig("config.json")
 	if err != nil {
