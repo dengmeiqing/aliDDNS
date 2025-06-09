@@ -230,8 +230,8 @@ class DNSPodDDNS:
 if __name__ == "__main__":
     # 配置信息
     CONFIG = {
-        'login_token': '496338,c24fef8c0d8b29b1f7f4fce43194fe39',  # DNSPod API Token
-        'domain': 'stnts.eu.org',           # 主域名
+        'login_token': 'your_id,your_token',  # DNSPod API Token
+        'domain': 'example.com',           # 主域名
         'sub_domain': 'www',               # 子域名
         'check_interval': 300              # 检查间隔（秒）
     }
